@@ -19,6 +19,7 @@ urlpatterns = [
     path('core-admin/', include('core_admin.urls')),
 ]
 
-# Añadir esto al final, solo para desarrollo
+# Servir archivos estáticos y media en desarrollo (DEBUG=True)
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

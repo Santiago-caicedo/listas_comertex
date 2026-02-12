@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import BusquedaForm
 from .services import consultar_api_por_id, consultar_api_por_id_y_nombre, consultar_api_por_nombre
 from .models import Busqueda, Resultado # <-- IMPORTAMOS LOS MODELOS
+from .notifications import notificar_superiores_hallazgo
 from django.utils import timezone
 from weasyprint import HTML
 from django.template.loader import render_to_string
@@ -117,6 +118,10 @@ def pagina_busqueda(request):
                     if alerta_generada:
                         busqueda_obj.genero_alerta = True
                     busqueda_obj.save()
+
+                    # Notificar a los superiores de la empresa si hubo hallazgos
+                    if busqueda_obj.encontro_resultados:
+                        notificar_superiores_hallazgo(busqueda_obj)
         else:
             # If form is invalid, print errors
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
