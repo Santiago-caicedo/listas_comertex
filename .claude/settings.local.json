@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /mnt/c/Users/ASUS/documents/Software_listas_vadom/comertex_listas/consultas/static/consultas/images && cp /mnt/c/Users/ASUS/documents/Software_listas_vadom/comertex_listas/logo_vadom.png /mnt/c/Users/ASUS/documents/Software_listas_vadom/comertex_listas/consultas/static/consultas/images/logo_vadom.png && echo \"OK\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
